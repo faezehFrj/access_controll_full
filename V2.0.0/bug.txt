@@ -1,0 +1,35 @@
+Rebooting...
+ets Jun  8 2016 00:22:57
+
+rst:0xc (SW_CPU_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0018,len:4
+load:0x3fff001c,len:1216
+ho 0 tail 12 room 4
+load:0x40078000,len:9720
+ho 0 tail 12 room 4
+load:0x40080400,len:6352
+entry 0x400806b8
+Guru Meditation Error: Core  1 panic'ed (LoadProhibited). Exception was unhandled.
+Core 1 register dump:
+PC      : 0x400d5652  PS      : 0x00060130  A0      : 0x800d1537  A1      : 0x3ffb1ee0  
+A2      : 0x3ffc10cc  A3      : 0x00000001  A4      : 0x3ffb1eed  A5      : 0x000000ff  
+A6      : 0x0000fe01  A7      : 0x00000000  A8      : 0x000000ff  A9      : 0x3ffb1eef  
+A10     : 0x00000000  A11     : 0x3ffb1eed  A12     : 0x000000ff  A13     : 0x3ffb1eee  
+A14     : 0x00060f20  A15     : 0x00000000  SAR     : 0x0000001f  EXCCAUSE: 0x0000001c  
+EXCVADDR: 0x00000000  LBEG    : 0x00000000  LEND    : 0x00000000  LCOUNT  : 0x00000000  
+
+Backtrace: 0x400d5652:0x3ffb1ee0 0x400d1534:0x3ffb1f10 0x400d1c50:0x3ffb1f30 0x400d1cf7:0x3ffb1f60 0x400d719a:0x3ffb1fb0 0x4008a351:0x3ffb1fd0
+
+
+Decoding 6 results
+0x400d5652: CompressedEnumTable ::set(unsigned int, bool) at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/nvs_flash/src/compressed_enum_table.hpp line 52
+:  (inlined by) nvs::Storage::init(unsigned int, unsigned int) at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/nvs_flash/src/nvs_storage.cpp line 112
+0x400d1534: uartEnableInterrupt at C:\Arduino\hardware\espressif\esp32\cores\esp32/esp32-hal-uart.c line 512
+0x400d1c50: _GLOBAL__sub_I_loopTaskHandle at C:\Arduino\hardware\espressif\esp32\cores\esp32/IPAddress.h line 94
+:  (inlined by) _GLOBAL__sub_I_loopTaskHandle at C:\Arduino\hardware\espressif\esp32\cores\esp32/main.cpp line 29
+0x400d1cf7: addApbChangeCallback at C:\Arduino\hardware\espressif\esp32\cores\esp32/esp32-hal-cpu.c line 213
+0x400d719a: uart_start_select at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/vfs/vfs_uart.c line 140
+0x4008a351: _xt_context_save at /home/runner/work/esp32-arduino-lib-builder/esp32-arduino-lib-builder/esp-idf/components/freertos/xtensa_context.S line 131
